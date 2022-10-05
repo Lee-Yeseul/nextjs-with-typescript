@@ -3,7 +3,7 @@ export type User = {
   name: string;
 };
 
-export type NewUser = {
+export type mockUser = {
   name: string;
   email: string;
   list: number;
