@@ -10,7 +10,7 @@ export type mockUser = {
   country: string;
 };
 
-export type Todo = {
+export type TodoItem = {
   id: number;
   description: string;
   isSuccess: boolean;
