@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 // import { sampleUserData } from "../../../utils/sample-data";
-import mockData from "../../../public/data/mock-data.json";
+import mockData from "../../../public/data/mock-user-data.json";
 import { mockUser } from "../../../interfaces";
 
 const handler = (_req: NextApiRequest, res: NextApiResponse) => {

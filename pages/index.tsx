@@ -1,9 +1,14 @@
-import Layout from "../components/Layout";
+import Layout from "../components/Layout/Layout";
+import { CssBaseline } from "@mui/material";
+import Todo from "../components/Todo/Todo";
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript">
-    <h1>Home</h1>
-  </Layout>
+  <div>
+    <CssBaseline />
+    <Layout title="Todo list | Next.js + TypeScript">
+      <Todo />
+    </Layout>
+  </div>
 );
 
 export default IndexPage;
