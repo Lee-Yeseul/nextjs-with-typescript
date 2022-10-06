@@ -51,6 +51,7 @@ const AddTodo = ({ setTodolist }: Props) => {
             placeholder="Add your todo... "
             inputRef={inputRef}
             sx={{ width: 300 }}
+            inputProps={{ maxLength: 25 }}
           />
           <IconButton type="submit">
             <AddCircleOutlineIcon sx={{ color: "white" }} />
