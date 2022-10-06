@@ -6,6 +6,7 @@ import AddTodo from "../components/Todo/AddTodo";
 import { Container } from "@mui/material";
 import TodoList from "../components/Todo/TodoList";
 import { ThemeProvider, createTheme } from "@mui/material";
+import { CssBaseline } from "@mui/material";
 
 const IndexPage = ({
   data,
@@ -28,6 +29,8 @@ const IndexPage = ({
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
+
       <Container
         sx={{
           display: "flex",
