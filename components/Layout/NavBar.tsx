@@ -14,7 +14,9 @@ const NavBar = () => {
       <Toolbar>
         <RuleIcon sx={{ color: "#fff", fontSize: 40, mr: 3 }} />
         <Link href="/">
-          <Typography sx={{ color: "#fff" }}>Todo List</Typography>
+          <Typography sx={{ color: "#fff", fontWeight: "bold" }}>
+            Todo List
+          </Typography>
         </Link>
       </Toolbar>
     </AppBar>

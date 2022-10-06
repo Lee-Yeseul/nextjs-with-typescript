@@ -11,7 +11,7 @@ export type mockUser = {
 };
 
 export type TodoItem = {
-  id: number;
+  _id: string;
   description: string;
   isSuccess: boolean;
 };
