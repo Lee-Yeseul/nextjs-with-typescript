@@ -15,9 +15,7 @@ const Todo = ({ todo, setTodolist }: Props) => {
   const [checked, setChecked] = useState<boolean>(todo.isSuccess);
 
   const handleChange = async () => {
-    const res = await axios.patch(
-      `http://15.164.50.182:3000/api/list/${todo._id}`
-    );
+    const res = await axios.patch(`http://15.164.50.182/api/list/${todo._id}`);
     const data = res.data.isSuccess;
     console.log(data);
 
@@ -26,8 +24,8 @@ const Todo = ({ todo, setTodolist }: Props) => {
 
   const handleClick = async () => {
     console.log(todo._id);
-    await axios.delete(`http://15.164.50.182:3000/api/list/${todo._id}`);
-    const res = await axios.get("http://15.164.50.182:3000/api/list");
+    await axios.delete(`http://15.164.50.182/api/list/${todo._id}`);
+    const res = await axios.get("http://15.164.50.182/api/list");
     const data = res.data;
     setTodolist(data);
   };
@@ -35,21 +33,24 @@ const Todo = ({ todo, setTodolist }: Props) => {
   return (
     <Box
       sx={{
-        width: 400,
+        width: 360,
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        margin: "1rem",
+        margin: 1.5,
+        paddingBottom: 1,
+        borderBottom: 1,
+        borderColor: "white",
       }}
     >
       <Checkbox
         checked={checked}
         onChange={handleChange}
-        sx={{ color: "#b388ff", "&.Mui-checked": { color: "#b388ff" } }}
+        sx={{ color: "white", "&.Mui-checked": { color: "white" } }}
       />
-      <Typography>{todo.description} </Typography>
+      <Typography color="white">{todo.description} </Typography>
       <IconButton onClick={handleClick}>
-        <HighlightOffIcon sx={{ color: "#b388ff" }} />
+        <HighlightOffIcon sx={{ color: "white" }} />
       </IconButton>
     </Box>
   );

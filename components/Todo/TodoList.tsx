@@ -2,6 +2,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { TodoItem } from "../../interfaces";
 import Todo from "./Todo";
+import { Box } from "@mui/material";
 
 type Props = {
   todolist: TodoItem[];
@@ -9,11 +10,17 @@ type Props = {
 };
 const TodoList = ({ todolist, setTodolist }: Props) => {
   return (
-    <div>
+    <Box
+      sx={{
+        backgroundColor: "#b388ff",
+        width: 400,
+        boxShadow: 2,
+      }}
+    >
       {todolist.map((todo) => {
         return <Todo key={todo._id} todo={todo} setTodolist={setTodolist} />;
       })}
-    </div>
+    </Box>
   );
 };
 

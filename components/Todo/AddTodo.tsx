@@ -17,7 +17,7 @@ const AddTodo = ({ setTodolist }: Props) => {
 
     if (inputRef.current && inputRef.current.value) {
       console.log(inputRef.current.value);
-      const res = await axios.post("http://15.164.50.182:3000/api/list", {
+      const res = await axios.post("http://15.164.50.182/api/list", {
         description: inputRef.current.value,
       });
       const data = await res.data;
@@ -33,15 +33,29 @@ const AddTodo = ({ setTodolist }: Props) => {
     <Box
       sx={{
         margin: "1rem",
-        paddingTop: "0.5rem",
+        padding: 2,
+        backgroundColor: "#E2D6FF",
         width: 400,
+        boxShadow: 2,
       }}
     >
       <form onSubmit={handleSubmit}>
-        <Input placeholder="Add your todo... " inputRef={inputRef} />
-        <IconButton type="submit">
-          <AddCircleOutlineIcon sx={{ color: "#b388ff" }} />
-        </IconButton>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          <Input
+            placeholder="Add your todo... "
+            inputRef={inputRef}
+            sx={{ width: 300 }}
+          />
+          <IconButton type="submit">
+            <AddCircleOutlineIcon sx={{ color: "white" }} />
+          </IconButton>
+        </Box>
       </form>
     </Box>
   );
