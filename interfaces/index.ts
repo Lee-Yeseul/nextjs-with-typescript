@@ -9,3 +9,9 @@ export type mockUser = {
   list: number;
   country: string;
 };
+
+export type TodoItem = {
+  _id: string;
+  description: string;
+  isSuccess: boolean;
+};
