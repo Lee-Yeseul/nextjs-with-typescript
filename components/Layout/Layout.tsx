@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Layout = ({ children, title = "This is the default title" }: Props) => (
-  <div>
+  <div style={{ backgroundColor: "#fbf7ff" }}>
     <Head>
       <title>{title}</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
