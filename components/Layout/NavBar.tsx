@@ -4,11 +4,13 @@ import { Typography, AppBar, Toolbar } from "@mui/material";
 import RuleIcon from "@mui/icons-material/Rule";
 
 const NavBar = () => {
+  const bgColor = "#b388ff";
+
   return (
     <AppBar
       color="transparent"
       elevation={1}
-      sx={{ alignItems: "center", backgroundColor: "#b388ff" }}
+      sx={{ alignItems: "center", backgroundColor: bgColor }}
       position="static"
     >
       <Toolbar>

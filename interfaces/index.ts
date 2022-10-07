@@ -15,3 +15,8 @@ export type TodoItem = {
   description: string;
   isSuccess: boolean;
 };
+
+export type UserInfo = {
+  name: string;
+  birth: string;
+};

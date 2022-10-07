@@ -10,6 +10,8 @@ type Props = {
 };
 
 const AddTodo = ({ setTodolist }: Props) => {
+  const addColor = "#E2D6FF";
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -17,11 +19,10 @@ const AddTodo = ({ setTodolist }: Props) => {
 
     if (inputRef.current && inputRef.current.value) {
       console.log(inputRef.current.value);
-      const res = await axios.post("http://15.164.50.182/api/list", {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}/list`, {
         description: inputRef.current.value,
       });
-      const data = await res.data;
-      console.log(data);
+      const data = await res.data.result;
       setTodolist((prev) => [...prev, data]);
       inputRef.current.value = "";
     } else {
@@ -34,7 +35,7 @@ const AddTodo = ({ setTodolist }: Props) => {
       sx={{
         margin: "1rem",
         padding: 2,
-        backgroundColor: "#E2D6FF",
+        backgroundColor: addColor,
         width: 400,
         boxShadow: 2,
       }}

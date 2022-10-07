@@ -1,4 +1,4 @@
-import { Box, Pagination } from "@mui/material";
+import { Box } from "@mui/material";
 
 const Footer = () => {
   return (
@@ -9,9 +9,7 @@ const Footer = () => {
         margin: 1,
         padding: 1,
       }}
-    >
-      <Pagination count={10} />
-    </Box>
+    ></Box>
   );
 };
 

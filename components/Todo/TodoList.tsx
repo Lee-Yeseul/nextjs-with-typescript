@@ -9,12 +9,15 @@ type Props = {
   setTodolist: Dispatch<SetStateAction<TodoItem[]>>;
 };
 const TodoList = ({ todolist, setTodolist }: Props) => {
+  const listColor = "#b388ff";
+
   return (
     <Box
       sx={{
-        backgroundColor: "#b388ff",
+        backgroundColor: listColor,
         width: 400,
         boxShadow: 2,
+        marginBottom: 3,
       }}
     >
       {todolist.map((todo) => {

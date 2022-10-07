@@ -1,6 +1,8 @@
-import axios from 'axios';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+//api 호출 없이 전체 list 가져와서 getServerSideProps로 pagination 하는 page
+
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const Page = ({}) => {
   const router = useRouter();

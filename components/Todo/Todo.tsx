@@ -1,10 +1,10 @@
-// 하나의 Todo
 import { useState, Dispatch, SetStateAction } from "react";
 import axios from "axios";
-import { Checkbox, Box, IconButton, Typography } from "@mui/material";
+import { Checkbox, Box, Typography, IconButton } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 import { TodoItem } from "../../interfaces";
+import FormDialog from "../common/FormDialog";
 
 type Props = {
   todo: TodoItem;
@@ -13,10 +13,13 @@ type Props = {
 
 const Todo = ({ todo, setTodolist }: Props) => {
   const [checked, setChecked] = useState<boolean>(todo.isSuccess);
+  const dev = process.env.NEXT_PUBLIC_DEV;
 
   const handleChange = async () => {
-    const res = await axios.patch(`http://15.164.50.182/api/list/${todo._id}`);
-    const data = res.data.isSuccess;
+    const res = await axios.patch(
+      `${process.env.NEXT_PUBLIC_URL}/list/${todo._id}`
+    );
+    const data = res.data.result.isSuccess;
     console.log(data);
 
     setChecked(data);
@@ -49,9 +52,14 @@ const Todo = ({ todo, setTodolist }: Props) => {
         sx={{ color: "white", "&.Mui-checked": { color: "white" } }}
       />
       <Typography color="white">{todo.description} </Typography>
-      <IconButton onClick={handleClick}>
-        <HighlightOffIcon sx={{ color: "white" }} />
-      </IconButton>
+
+      {dev ? (
+        <IconButton onClick={handleClick}>
+          <HighlightOffIcon sx={{ color: "white" }} />
+        </IconButton>
+      ) : (
+        <FormDialog id={todo._id} setTodolist={setTodolist} />
+      )}
     </Box>
   );
 };
