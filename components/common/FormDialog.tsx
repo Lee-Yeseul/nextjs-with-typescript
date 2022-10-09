@@ -1,4 +1,4 @@
-import { useRef, useState, Dispatch, SetStateAction } from "react";
+import { useRef, useState, Dispatch, SetStateAction } from 'react';
 
 import {
   IconButton,
@@ -8,11 +8,11 @@ import {
   DialogContent,
   DialogTitle,
   Input,
-} from "@mui/material";
+} from '@mui/material';
 
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import axios from "axios";
-import { TodoItem } from "../../interfaces";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import axios from 'axios';
+import { TodoItem } from '../../interfaces';
 
 type Props = {
   id: string;
@@ -30,10 +30,10 @@ export default function FormDialog({ id, setTodolist }: Props) {
   const handleClose = () => {
     setOpen(false);
   };
-  process.env.NEXT_PUBLIC_URL;
+
   const handleSubmit = async () => {
     if (inputRef.current && inputRef.current.value) {
-      console.log("hi");
+      console.log('production은 비밀번호가 필요합니다.');
       const deleteTodo = await axios.delete(
         `${process.env.NEXT_PUBLIC_URL}/list/${id}`,
         {
@@ -48,17 +48,17 @@ export default function FormDialog({ id, setTodolist }: Props) {
         setTodolist(data);
         setOpen(false);
       } else {
-        console.log("잘못된 비밀번호입니다.");
+        console.log('잘못된 비밀번호입니다.');
       }
     } else {
-      console.log("비밀번호를 입력하세요");
+      console.log('비밀번호를 입력하세요');
     }
   };
 
   return (
     <div>
       <IconButton onClick={handleClickOpen}>
-        <HighlightOffIcon sx={{ color: "white" }} />
+        <HighlightOffIcon sx={{ color: 'white' }} />
       </IconButton>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Password</DialogTitle>
@@ -66,8 +66,8 @@ export default function FormDialog({ id, setTodolist }: Props) {
           <form onSubmit={handleSubmit}>
             <Input
               autoFocus
-              type="password"
-              placeholder="비밀번호를 입력하세요."
+              type='password'
+              placeholder='비밀번호를 입력하세요.'
               inputRef={inputRef}
             />
           </form>
