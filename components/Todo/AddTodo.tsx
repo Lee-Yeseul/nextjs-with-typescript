@@ -1,6 +1,7 @@
 import { useRef, Dispatch, SetStateAction } from 'react';
 import { Box, Input, IconButton } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { theme } from '../../styles/theme';
 import { TodoItem } from '../../interfaces';
 import axios from 'axios';
 
@@ -10,8 +11,6 @@ type Props = {
 };
 
 const AddTodo = ({ setTodolist }: Props) => {
-  const addColor = '#E2D6FF';
-
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,7 +33,7 @@ const AddTodo = ({ setTodolist }: Props) => {
       sx={{
         margin: '1rem',
         padding: 2,
-        backgroundColor: addColor,
+        backgroundColor: theme.palette.primary.light,
         width: 400,
         boxShadow: 2,
       }}
