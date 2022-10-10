@@ -1,8 +1,8 @@
-import { useRef, Dispatch, SetStateAction } from "react";
-import { Box, Input, IconButton } from "@mui/material";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { TodoItem } from "../../interfaces";
-import axios from "axios";
+import { useRef, Dispatch, SetStateAction } from 'react';
+import { Box, Input, IconButton } from '@mui/material';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { TodoItem } from '../../interfaces';
+import axios from 'axios';
 
 type Props = {
   todolist: TodoItem[];
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const AddTodo = ({ setTodolist }: Props) => {
-  const addColor = "#E2D6FF";
+  const addColor = '#E2D6FF';
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -18,22 +18,21 @@ const AddTodo = ({ setTodolist }: Props) => {
     e.preventDefault();
 
     if (inputRef.current && inputRef.current.value) {
-      console.log(inputRef.current.value);
       const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}/list`, {
         description: inputRef.current.value,
       });
       const data = await res.data.result;
       setTodolist((prev) => [...prev, data]);
-      inputRef.current.value = "";
+      inputRef.current.value = '';
     } else {
-      console.log("내용을 입력해주세요");
+      console.log('내용을 입력해주세요');
     }
   };
 
   return (
     <Box
       sx={{
-        margin: "1rem",
+        margin: '1rem',
         padding: 2,
         backgroundColor: addColor,
         width: 400,
@@ -43,19 +42,19 @@ const AddTodo = ({ setTodolist }: Props) => {
       <form onSubmit={handleSubmit}>
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'space-around',
+            alignItems: 'center',
           }}
         >
           <Input
-            placeholder="Add your todo... "
+            placeholder='Add your todo... '
             inputRef={inputRef}
             sx={{ width: 300 }}
             inputProps={{ maxLength: 25 }}
           />
-          <IconButton type="submit">
-            <AddCircleOutlineIcon sx={{ color: "white" }} />
+          <IconButton type='submit'>
+            <AddCircleOutlineIcon sx={{ color: 'white' }} />
           </IconButton>
         </Box>
       </form>
