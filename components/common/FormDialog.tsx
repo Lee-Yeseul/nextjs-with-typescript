@@ -34,22 +34,29 @@ export default function FormDialog({ id, setTodolist }: Props) {
   const handleSubmit = async () => {
     if (inputRef.current && inputRef.current.value) {
       console.log('production은 비밀번호가 필요합니다.');
-      const deleteTodo = await axios.delete(
-        `${process.env.NEXT_PUBLIC_URL}/list/${id}`,
-        {
+      try {
+        await axios.delete(`${process.env.NEXT_PUBLIC_URL}/list/${id}`, {
           data: {
             password: inputRef.current.value,
           },
-        }
-      );
-      if (deleteTodo.data.status === 200) {
+        });
         const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}/list`);
         const data = res.data.result.lists;
         setTodolist(data);
         setOpen(false);
-      } else {
+      } catch {
+        alert('잘못된 비밀번호입니다.');
         console.log('잘못된 비밀번호입니다.');
       }
+
+      // if (deleteTodo.data.status === 200) {
+      //   const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}/list`);
+      //   const data = res.data.result.lists;
+      //   setTodolist(data);
+      //   setOpen(false);
+      // } else {
+      //   console.log('잘못된 비밀번호입니다.');
+      // }
     } else {
       console.log('비밀번호를 입력하세요');
     }

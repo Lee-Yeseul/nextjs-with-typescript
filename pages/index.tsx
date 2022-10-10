@@ -5,7 +5,6 @@ import { TodoItem, UserInfo } from '../interfaces/';
 import AddTodo from '../components/Todo/AddTodo';
 import { Container, Pagination } from '@mui/material';
 import TodoList from '../components/Todo/TodoList';
-import { createTheme } from '@mui/material';
 
 const IndexPage = ({
   data,
@@ -52,18 +51,23 @@ const IndexPage = ({
   };
 
   return (
-    <Container
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        height: '100%',
-      }}
-    >
-      <AddTodo setTodolist={setTodolist} todolist={todolist} />
-      {curList && <TodoList todolist={curList} setTodolist={setTodolist} />}
-      <Pagination count={totalPage} onChange={handlePagination} />
-    </Container>
+    <div>
+      <Container
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          height: 520,
+        }}
+      >
+        <div>
+          <AddTodo setTodolist={setTodolist} todolist={todolist} />
+          {curList && <TodoList todolist={curList} setTodolist={setTodolist} />}
+        </div>
+        <Pagination count={totalPage} onChange={handlePagination} />
+      </Container>
+    </div>
   );
 };
 

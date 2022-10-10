@@ -2,15 +2,17 @@ import Link from 'next/link';
 
 import { Typography, AppBar, Toolbar } from '@mui/material';
 import RuleIcon from '@mui/icons-material/Rule';
+import { theme } from '../../styles/theme';
 
 const NavBar = () => {
-  const bgColor = '#b388ff';
-
   return (
     <AppBar
       color='transparent'
       elevation={1}
-      sx={{ alignItems: 'center', backgroundColor: bgColor }}
+      sx={{
+        alignItems: 'center',
+        backgroundColor: theme.palette.primary.main,
+      }}
       position='sticky'
     >
       <Toolbar>

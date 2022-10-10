@@ -1,9 +1,13 @@
 //api 호출 없이 전체 list 가져와서 getServerSideProps로 pagination 하는 page
-
-import axios from 'axios';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { useRouter } from 'next/router';
-import { TodoItem } from '../../interfaces/';
+import { useState } from "react";
+import axios from "axios";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { useRouter } from "next/router";
+import { TodoItem } from "../../interfaces/";
+import Todo from "../../components/Todo/Todo";
+import AddTodo from "../../components/Todo/AddTodo";
+import { Box, Pagination, Container } from "@mui/material";
+import { theme } from "../../styles/theme";
 
 const Page = ({
   data,
@@ -12,23 +16,50 @@ const Page = ({
   const page = router.query.page;
   const perPage = 5;
   const checkDev = process.env.NEXT_PUBLIC_DEV;
-  let initialData;
-  if (checkDev) {
-    initialData = data.lists;
-  } else {
-    initialData = data;
-  }
+  const [todolist, setTodolist] = useState<TodoItem[]>(
+    checkDev ? data.lists : data
+  );
+  const totalPage = Math.ceil(todolist.length / perPage);
 
-  // props로 total 값 받기
-  // const totalTodos =
-  // const totalPages = totalTodos / perPage // 정수처리하기
-  // const start = (page -1) * perPage
-  // const end = start + perPage
-  // if(end > totalTodos){
+  const offset = (Number(page) - 1) * perPage;
 
-  // }
+  const handlePagination = (e: React.ChangeEvent<unknown>, page: number) => {
+    router.push(`/todolist/${page}`);
+  };
 
-  return <div>dynamic routing!</div>;
+  return (
+    <div>
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-between",
+          height: 520,
+        }}
+      >
+        <div>
+          <AddTodo setTodolist={setTodolist} todolist={todolist} />
+          <Box
+            sx={{
+              backgroundColor: theme.palette.primary.main,
+              width: 400,
+              boxShadow: 2,
+              margin: "1rem",
+              padding: 2,
+            }}
+          >
+            {todolist.slice(offset, offset + perPage).map((todo) => {
+              return (
+                <Todo key={todo._id} todo={todo} setTodolist={setTodolist} />
+              );
+            })}
+          </Box>
+        </div>
+        <Pagination count={totalPage} onChange={handlePagination} />
+      </Container>
+    </div>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
