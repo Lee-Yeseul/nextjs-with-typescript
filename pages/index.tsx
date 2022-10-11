@@ -62,7 +62,7 @@ const IndexPage = ({
         }}
       >
         <div>
-          <AddTodo setTodolist={setTodolist} todolist={todolist} />
+          <AddTodo todolist={todolist} setTodolist={setTodolist} />
           {curList && <TodoList todolist={curList} setTodolist={setTodolist} />}
         </div>
         <Pagination count={totalPage} onChange={handlePagination} />

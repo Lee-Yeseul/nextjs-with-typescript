@@ -28,8 +28,7 @@ const Todo = ({ todo, setTodolist }: Props) => {
     console.log("dev는 비밀번호 입력이 필요가 없어요");
     await axios.delete(`http://15.164.50.182/api/list/${todo._id}`);
     const res = await axios.get("http://15.164.50.182/api/list");
-    const data = res.data;
-    console.log(data);
+    const data = res.data.result.lists;
     setTodolist(data);
   };
 
