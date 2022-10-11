@@ -2,8 +2,6 @@
 
 - with Next.js, Typescript, materialUI
 
----
-
 1. todo CRUD
 2. dev 환경과 production 환경 분리하기
 
