@@ -35,7 +35,7 @@ const Page = ({
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "space-between",
-          height: 520,
+          height: 550,
         }}
       >
         <div>
