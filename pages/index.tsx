@@ -1,10 +1,10 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { TodoItem, UserInfo } from '../interfaces/';
-import AddTodo from '../components/Todo/AddTodo';
-import { Container, Pagination } from '@mui/material';
-import TodoList from '../components/Todo/TodoList';
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { TodoItem, UserInfo } from "../interfaces/";
+import AddTodo from "../components/Todo/AddTodo";
+import { Container, Pagination } from "@mui/material";
+import TodoList from "../components/Todo/TodoList";
 
 const IndexPage = ({
   data,
@@ -54,11 +54,11 @@ const IndexPage = ({
     <div>
       <Container
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          height: 520,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-between",
+          height: 550,
         }}
       >
         <div>
